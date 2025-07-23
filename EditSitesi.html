@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <style>
+            body{
+                text-align: center;
+                font-family:'Times New Roman', Times, serif;
+                margin: 0;
+                padding: 0;
+            }
+            #videoContainer,#videoContainer1,#videoContainer2,#videoContainer3{
+                display: none;
+                position: fixed;
+                top:0;
+                left:0;
+                width: 100vw;
+                height: 100vh;
+                justify-content: center;
+                align-items: center;
+                display: flex;
+                background-color: rgba(0,0,0,0.8);
+                z-index: 999;
+              
+            }
+            #butonlar{
+                position: fixed;
+                top: 20px;
+                right:70%;
+                transform: translateX(-50%);
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                gap: 20px;
+                z-index: 1000;
+                display: none; 
+            }
+               #Merkezbutonlar{
+                position: fixed;
+                top: 50%;
+                left:50%;
+                transform: translate(-50%,-50%);
+                display: flex;
+               flex-direction: column; 
+               align-items: center;
+                gap: 20px;
+                z-index: 100;
+                
+            }
+            button{
+            padding: 10px 20px;
+            font-size: 20px;
+            border: none;
+            border-radius: 8px;
+            background-color: #333;
+            color: white;
+            cursor: pointer;
+            }
+        </style>
+    </head>
+    <body>
+       
+        <div id="MerkezButonlar">
+          
+            <button style="width: 160px; border-radius: 20px;" onclick="aktifEt('video')">Editler</button>
+       
+        </div>
+       
+    <div id="butonlar">
+        <button onclick="tikla()">Onur Edit İzle</button>
+        <button onclick="tikla1()">Haciz Kurumu Edit İzle</button>
+        <button onclick="tikla2()"> Onur Dehşet Edit İzle </button>
+        <button onclick="tikla3()"> Staj Dehşet Edit İzle</button>
+        <button onclick="Anasayfaya()"> Anasayfaya Dön </button>
+    </div>
+      <div id="videoContainer" >
+        <video id="Video-Onur" width="400" controls >
+            <source src="WhatsApp Video 2025-07-22 saat 14.46.28_9241c138.mp4">
+        </video>
+     </div>
+      <div id="videoContainer1">
+        <video id="Video-Haciz-Kurumu" width="640" controls  >
+            <source src="EditOnur.mp4">
+        </video>
+      </div>
+      <div id="videoContainer2">
+        <video id="Video-Onur-Dehşet-Edit" width="540" controls >
+            <source src="Onurdehşetedit.mp4">
+        </video>
+      </div>
+      <div>
+        <div id="videoContainer3">
+            <video id="Video-Staj-Edit" width="540" controls>
+                <source src="StajDehşet.mp4">
+            </video>
+      </div>
+      <script>
+        function hideAllVideos(){
+               document.getElementById("videoContainer").style.display="none";
+               document.getElementById("videoContainer1").style.display="none";
+               document.getElementById("videoContainer2").style.display="none";
+               document.getElementById("videoContainer3").style.display="none";
+    
+                // her iki videoyu durdur
+                const video1 = document.getElementById("Video-Onur");
+                video1.pause();
+                video1.currentTime = 0;
+
+                const video2 = document.getElementById("Video-Haciz-Kurumu");
+                video2.pause();
+                video2.currentTime = 0;
+
+                const video3=document.getElementById("Video-Onur-Dehşet-Edit");
+                video3.pause();
+                video3.currentTime=0;
+
+                const video4=document.getElementById("Video-Staj-Edit");
+                video4.pause();
+                video4.currentTime=0;
+
+        }
+        function hideAllSelection(){
+            document.getElementById("MerkezButonlar").style.display = "none";
+            document.getElementById("butonlar").style.display = "none";
+            document.getElementById("Fotobutonlar").style.display = "none";
+            document.getElementById("fotoGoster").style.display = "none";
+        }
+
+        function tikla1(){
+            hideAllVideos();
+
+            const container= document.getElementById("videoContainer1");
+            container.style.display='flex';
+            const video=document.getElementById("Video-Haciz-Kurumu");
+            video.play();
+        }
+        function tikla(){
+            hideAllVideos();
+
+            const container= document.getElementById("videoContainer");
+            container.style.display='flex';
+            const video= document.getElementById("Video-Onur");
+            video.play();
+        }
+        function tikla2(){
+            hideAllVideos();
+
+            const container=document.getElementById("videoContainer2");
+            container.style.display='flex';
+            const video=document.getElementById("Video-Onur-Dehşet-Edit");
+            video.play();
+        }
+        function tikla3(){
+            hideAllVideos();
+
+            const container=document.getElementById("videoContainer3").style.display='';
+            container.style.display='flex';
+            const video=document.getElementById("Video-Staj-Edit");
+            video.play();
+        }
+        function aktifEt(tip){
+            document.getElementById("MerkezButonlar").style.display='none';
+            hideAllVideos();
+            if(tip=="video"){
+                document.getElementById("butonlar").style.display="flex";
+        }}
+        function Anasayfaya(){
+            document.getElementById("MerkezButonlar").style.display="flex";
+             document.getElementById("butonlar").style.display = "none";
+            hideAllVideos();
+
+            
+        }
+        window.onload=function(){
+           hideAllVideos();
+           document.getElementById("MerkezButonlar").style.display="flex";
+           document.getElementById("butonlar").style.display = "none";
+        }
+      </script>
+    </body>
+</html>
+
